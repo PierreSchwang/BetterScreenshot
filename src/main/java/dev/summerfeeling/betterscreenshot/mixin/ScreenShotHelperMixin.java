@@ -16,7 +16,11 @@ import net.minecraft.util.text.event.HoverEvent;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -30,6 +34,10 @@ public abstract class ScreenShotHelperMixin {
 
     @Shadow @Final private static Logger LOGGER;
 
+    /**
+     * @author Summerfeeling
+     */
+    @Overwrite
     private static void saveScreenshotRaw(File gameDirectory, String screenshotName, int width, int height, Framebuffer buffer, Consumer<ITextComponent> messageConsumer) {
         System.out.println("saveScreenshotRaw");
         System.out.println("saveScreenshotRaw");
